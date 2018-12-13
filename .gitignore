@@ -164,3 +164,9 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
+.idea/encodings.xml
+.idea/gcloud-data-notes.iml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
