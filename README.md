@@ -22,3 +22,5 @@ gcloud help compute instances create
 
 ## Big Query
 
+https://cloud.google.com/bigquery/docs/
+
