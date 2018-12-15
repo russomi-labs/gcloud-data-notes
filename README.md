@@ -24,3 +24,11 @@ gcloud help compute instances create
 
 https://cloud.google.com/bigquery/docs/
 
+https://github.com/cloudacademy/optimizing-bigquery
+
+
+
+## Data Flow / Apache Beam
+
+https://github.com/cloudacademy/beam
+
