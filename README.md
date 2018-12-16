@@ -22,41 +22,41 @@ gcloud help compute instances create
 
 ## Big Query
 
-https://cloud.google.com/bigquery/docs/
-
-https://github.com/cloudacademy/optimizing-bigquery
-
-
+* https://cloud.google.com/bigquery/docs/
+* https://github.com/cloudacademy/optimizing-bigquery
 
 ## Data Flow / Apache Beam
 
-https://github.com/cloudacademy/beam
+* https://github.com/cloudacademy/beam
+* https://learning.oreilly.com/learning-paths/learning-path-apache/9781491995228/
+* https://github.com/eljefe6a/beamexample
+* https://docs.google.com/presentation/d/1ln5KndBTiskEOGa1QmYSCq16YWO9Dtmj7ZwzjU7SsW4/present?slide=id.g19b6635698_3_4
 
-https://learning.oreilly.com/learning-paths/learning-path-apache/9781491995228/
-    https://github.com/eljefe6a/beamexample
-    https://docs.google.com/presentation/d/1ln5KndBTiskEOGa1QmYSCq16YWO9Dtmj7ZwzjU7SsW4/present?slide=id.g19b6635698_3_4
+## Composer/Airflow
 
+* Composer Quickstart: https://cloud.google.com/composer/docs/quickstart
+* Apache Airflow: http://airflow.apache.org/
+* Concepts: https://airflow.apache.org/concepts.html   (Good one for overall concepts of airflow)
+* Airflow Github: https://github.com/apache/incubator-airflow
+* Common Pitfalls: https://cwiki.apache.org/confluence/display/AIRFLOW/Common+Pitfalls 
+* ETL best practices - https://gtoonstra.github.io/etl-with-airflow/
+* Astronomer.io Best Practices: https://www.astronomer.io/guides/dag-best-practices/
+* airflow-gcp-examples : https://github.com/alexvanboxel/airflow-gcp-examples
 
-## Airflow
+### Blogs
 
-https://medium.com/bluecore-engineering/were-all-using-airflow-wrong-and-how-to-fix-it-a56f14cb0753
-
-
+* http://michal.karzynski.pl/blog/2017/03/19/developing-workflows-with-apache-airflow/
+* https://medium.com/@nehiljain/lessons-learnt-while-airflow-ing-32d3b7fc3fbf
+* https://medium.com/snaptravel/airflow-part-2-lessons-learned-793fa3c0841e
+* http://soverycode.com/airflow-in-production-a-fictional-example/
+* https://www.agari.com/email-security-blog/airflow-agari/
+* https://medium.com/bluecore-engineering/were-all-using-airflow-wrong-and-how-to-fix-it-a56f14cb0753
 
 
 ---
 
 Composer/Airflow
 
-* Composer Quickstart: https://cloud.google.com/composer/docs/quickstart
-* Apache Airflow: http://airflow.apache.org/
-* Concepts: https://airflow.apache.org/concepts.html   (Good one for overall concepts of airflow)
-* Airflow Github: https://github.com/apache/incubator-airflow
-* Common Pitfalls: https://cwiki.apache.org/confluence/display/AIRFLOW/Common+Pitfalls
- 
-* ETL best practices - https://gtoonstra.github.io/etl-with-airflow/
-* Astronomer.io Best Practices: https://www.astronomer.io/guides/dag-best-practices/
-* airflow-gcp-examples : https://github.com/alexvanboxel/airflow-gcp-examples
 
 Blogs: 
 * http://michal.karzynski.pl/blog/2017/03/19/developing-workflows-with-apache-airflow/
