@@ -20,6 +20,11 @@ gcloud help compute instances create
 
 ```
 
+## Google Big Data Products
+ 
+* https://cloud.google.com/products/big-data/
+* https://cloud.google.com/docs/tutorials#big_data
+
 ## Big Query
 
 * https://cloud.google.com/bigquery/docs/
@@ -41,7 +46,7 @@ gcloud help compute instances create
 * Concepts: https://airflow.apache.org/concepts.html   (Good one for overall concepts of airflow)
 * Airflow Github: https://github.com/apache/incubator-airflow
 * Common Pitfalls: https://cwiki.apache.org/confluence/display/AIRFLOW/Common+Pitfalls 
-* ETL best practices - https://gtoonstra.github.io/etl-with-airflow/
+* :raised_hands: ETL best practices - https://gtoonstra.github.io/etl-with-airflow/
 * Astronomer.io Best Practices: https://www.astronomer.io/guides/dag-best-practices/
 * airflow-gcp-examples : https://github.com/alexvanboxel/airflow-gcp-examples
 
@@ -56,14 +61,13 @@ gcloud help compute instances create
  
 ### Testing DAGs
 
-Google Composer is based on airflow. 
+Google Composer is based on airflow. All operators, etc, they re-contribute back to airflow. 
 
-All operators, etc, they re-contribute back to airflow. 
 The only issue is there is no Repo or tag or anything that allows you to pull down Composer’s version of airflow. 
-They have some from airflow 1.9, some from 1.10 some from the master branch.
+They have some from airflow 1.9, some from 1.10 some from the master branch.  Composer is currently in 1.9 but has 
+released 1.10 for beta. We are using the 1.9 right now.  
 
-Composer is currently in 1.9 but has released 1.10 for beta. We are using the 1.9 right now.  Because of this, we use 
-their ‘base’ Docker image for testing our dags. We build off of that and run tests. 
+Because of this, use their ‘base’ Docker image for testing DAGs. We build off of that and run tests. 
 
 #### What to Verify
 * Validity and Integrity of the dag
@@ -71,7 +75,7 @@ their ‘base’ Docker image for testing our dags. We build off of that and run
 * Workflow is going where we expect (task to task, etc.)
 * We can query properties for the Dag and for each Operator (task) to test/verify them
 
-#### Dag Testing blogs
+#### Dag Testing Blogs
 * https://blog.usejournal.com/testing-in-airflow-part-1-dag-validation-tests-dag-definition-tests-and-unit-tests-2aa94970570c
 * https://medium.com/wbaa/datas-inferno-7-circles-of-data-testing-hell-with-airflow-cef4adff58d8
- 
+
