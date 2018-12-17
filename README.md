@@ -39,7 +39,7 @@ gcloud help compute instances create
 * https://www.youtube.com/watch?v=7Q5VJzJMG3A
 * https://www.youtube.com/watch?v=ss6SaNBHLGc
 
-## Composer/Airflow
+## Composer / Airflow
 
 * Composer Quickstart: https://cloud.google.com/composer/docs/quickstart
 * Apache Airflow: http://airflow.apache.org/
