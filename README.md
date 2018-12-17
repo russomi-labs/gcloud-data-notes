@@ -1,28 +1,27 @@
 # gcloud-data-notes
 
-Notes for Data Engineer – Professional Certification Preparation for Google
+Study notes for [Data Engineer – Professional Certification Preparation for Google](https://cloudacademy.com/learning-paths/data-engineer-professional-certification-preparation-for-google-83/)
 
 ## Install and Configure Google Cloud SDK 
 
 1. Download the [gcloud SDK](https://cloud.google.com/sdk)
 1. Activate your project `gcloud init` or `gcloud config configurations activate [profile name]`
 1. See [Managing SDK Configurations](https://cloud.google.com/sdk/docs/configurations) and 
-other [All How-to Guides](https://cloud.google.com/sdk/docs/how-to)
+[All How-to Guides](https://cloud.google.com/sdk/docs/how-to)
+1. The gcloud config files are located under `~/.config/` by default.
 
 ### Core Commands
 
 ```bash
-
 gcloud auth list
 gcloud config list
 gcloud info
 gcloud help
 gcloud help compute instances create
-
 ```
 
 ## Google Big Data Products
- 
+
 * https://cloud.google.com/products/big-data/
 * https://cloud.google.com/docs/tutorials#big_data
 
