@@ -1,4 +1,5 @@
 # gcloud-data-notes
+
 Notes for Data Engineer – Professional Certification Preparation for Google
 
 ## Install and Configure Google Cloud SDK 
@@ -70,12 +71,14 @@ released 1.10 for beta. We are using the 1.9 right now.
 Because of this, use their ‘base’ Docker image for testing DAGs. We build off of that and run tests. 
 
 #### What to Verify
+
 * Validity and Integrity of the dag
 * Non Cyclic
 * Workflow is going where we expect (task to task, etc.)
 * We can query properties for the Dag and for each Operator (task) to test/verify them
 
 #### Dag Testing Blogs
+
 * https://blog.usejournal.com/testing-in-airflow-part-1-dag-validation-tests-dag-definition-tests-and-unit-tests-2aa94970570c
 * https://medium.com/wbaa/datas-inferno-7-circles-of-data-testing-hell-with-airflow-cef4adff58d8
 
