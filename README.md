@@ -30,34 +30,49 @@ This file contains text you can copy and paste for the examples in Cloud Academy
 
 See [Apache Beam Java SDK Quickstart](https://beam.apache.org/get-started/quickstart-java/) for additional tutorials.
 
+### Before you Begin
+
+**Note:** Creating a gcloud service account is required to run locally for `gs` buckets.  
+
+See [Before you Begin](https://cloud.google.com/dataflow/docs/quickstarts/quickstart-java-maven#before-you-begin) for steps 
+to follow to create a service account, assign it a role, and download the key.
+
+Set the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to the file path of the JSON file that contains your 
+service account key. This variable only applies to your current shell session, so if you open a new session, set the 
+variable again.
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/service-account-file.json"
+```
+
 ### Building and Running a Pipeline
 Installing on your own computer: https://cloud.google.com/dataflow/docs/quickstarts  
 Transforms: https://beam.apache.org/documentation/sdks/javadoc/2.0.0/org/apache/beam/sdk/transforms/package-summary.html
 
-```
+```bash
 git clone https://github.com/cloudacademy/beam.git
 cd beam/examples/java8
 mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.MinimalLineCount
 ```
-```
+```bash
 gsutil cat gs://dataflow-samples/shakespeare/kinglear.txt | wc
 ```
 
 ### Deploying a Pipeline on Cloud Dataflow
-```
+```bash
 nano ~/.profile
     PROJECT=[Your Project ID]
     BUCKET=gs://dataflow-$PROJECT
 gsutil mb $BUCKET
 cd ~/beam/examples/java8
 ```
-```
+```bash
 mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.MinimalLineCountArgs \
   -Dexec.args="--runner=DataflowRunner \
   --project=$PROJECT \
   --tempLocation=$BUCKET/temp"
 ```
-```
+```bash
 mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.LineCount \
   -Dexec.args="--runner=DataflowRunner \
   --project=$PROJECT \
@@ -66,10 +81,10 @@ mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.LineCount \
 ```
 
 ### Custom Transforms
-```
+```bash
 cd ~/beam/examples/java8
 ```
-```
+```bash
 mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.MinimalWordCount \
   -Dexec.args="--runner=DataflowRunner \
   --project=$PROJECT \
@@ -78,10 +93,10 @@ mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.MinimalWordCount
 ```
 
 ### Composite Transforms
-```
+```bash
 cd ~/beam/examples/java8
 ```
-```
+```bash
 mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.complete.game.UserScore \
 -Dexec.args="--runner=DataflowRunner \
   --project=$PROJECT \
@@ -90,10 +105,10 @@ mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.complete.game.Us
 ```
 
 ### Windowing
-```
+```bash
 cd ~/beam/examples/java8
 ```
-```
+```bash
 mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.complete.game.HourlyTeamScore \
 -Dexec.args="--runner=DataflowRunner \
   --project=$PROJECT \
@@ -104,22 +119,24 @@ mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.complete.game.Ho
 ```
 
 ### Running LeaderBoard
-```
+```bash
 bq mk game
 ```
+
 API Console Credentials: https://console.developers.google.com/projectselector/apis/credentials
-```
+
+```bash
 export GOOGLE_APPLICATION_CREDENTIALS="[Path]/[Credentials file]"
 cd ~/beam/examples/java8
 ```
-```
+```bash
 mvn compile exec:java  -Dexec.mainClass=org.apache.beam.examples.complete.game.injector.Injector \
 -Dexec.args="$PROJECT game none"
 ```
-```
+```bash
 cd ~/beam/examples/java8
 ```
-```
+```bash
 mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.complete.game.LeaderBoard \
 -Dexec.args="--runner=DataflowRunner \
   --project=$PROJECT \
