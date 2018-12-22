@@ -209,12 +209,15 @@ mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.complete.game.Le
 
 ### Resources
 * [Dataflow Templates](https://github.com/GoogleCloudPlatform/DataflowTemplates)
-* https://github.com/cloudacademy/beam
-* https://learning.oreilly.com/learning-paths/learning-path-apache/9781491995228/
-* https://github.com/eljefe6a/beamexample
-* https://docs.google.com/presentation/d/1ln5KndBTiskEOGa1QmYSCq16YWO9Dtmj7ZwzjU7SsW4/present?slide=id.g19b6635698_3_4
-* https://www.youtube.com/watch?v=7Q5VJzJMG3A
-* https://www.youtube.com/watch?v=ss6SaNBHLGc
+* [Data Engineer – Professional Certification Preparation for Google](https://cloudacademy.com/learning-paths/data-engineer-professional-certification-preparation-for-google-83/)
+* [cloudacademy/beam](https://github.com/cloudacademy/beam)
+* [Learning Path: Apache Beam for Stream Processing](https://learning.oreilly.com/learning-paths/learning-path-apache/9781491995228/)
+* [Learn stream processing with Apache Beam - Strata 2017](https://docs.google.com/presentation/d/1ln5KndBTiskEOGa1QmYSCq16YWO9Dtmj7ZwzjU7SsW4/present?slide=id.g19b6635698_3_4)
+* [Tutorial - Learn stream processing with Apache Beam - Strata 2017](https://github.com/eljefe6a/beamexample)
+* [Advancing Serverless Data Processing in Cloud Dataflow (Cloud Next '18)](https://www.youtube.com/watch?v=7Q5VJzJMG3A)
+* [Apache Beam and Google Cloud Dataflow](https://www.youtube.com/watch?v=ss6SaNBHLGc)
+* [Performing ETL from a Relational Database into BigQuery](https://cloud.google.com/solutions/performing-etl-from-relational-database-into-bigquery)
+* [GoogleCloudPlatform/bigquery-etl-dataflow-sample](https://github.com/GoogleCloudPlatform/bigquery-etl-dataflow-sample)
 
 ## Composer / Airflow
 
