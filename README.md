@@ -103,7 +103,7 @@ gsutil cat gs://dataflow-samples/shakespeare/kinglear.txt | wc
 Setup Project and Bucket environment variables...
 
 ```bash
-export PROJECT=enter project name
+export PROJECT=$(gcloud config get-value core/project)
 export BUCKET=gs://dataflow-$PROJECT
 
 # or ...
@@ -222,8 +222,52 @@ mvn archetype:generate \
       -Dpackage=com.russomi.beam.examples \
       -DinteractiveMode=false
 ```
+### Dataflow Templates
 
-### Resources
+#### [Overview](https://cloud.google.com/dataflow/docs/guides/templates/overview)
+
+> Cloud Dataflow templates allow you to stage your pipelines on Cloud Storage and execute them from a variety of environments. You can use one of the Google-provided templates or create your own.
+
+> Templates provide you with additional benefits compared to traditional Cloud Dataflow deployment, such as:
+
+    * Pipeline execution does not require you to recompile your code every time.
+    * You can execute your pipelines without the development environment and associated dependencies that are common with traditional deployment. This is useful for scheduling recurring batch jobs.
+    * Runtime parameters allow you to customize the execution of the pipeline.
+    * Non-technical users can execute templates with the Google Cloud Platform Console, gcloud command-line tool, or the REST API.
+
+#### [Creating Templates](https://cloud.google.com/dataflow/docs/guides/templates/creating-templates)
+
+> Cloud Dataflow templates use runtime parameters to accept values that are only available during pipeline execution. 
+To customize the execution of a templated pipeline, you can pass these parameters to functions that run within the 
+pipeline (such as a `DoFn`).
+
+##### Creating and staging templates
+
+```bash
+   mvn compile exec:java \
+     -Dexec.mainClass=com.example.myclass \
+     -Dexec.args="--runner=DataflowRunner \
+                  --project=[YOUR_PROJECT_ID] \
+                  --stagingLocation=gs://[YOUR_BUCKET_NAME]/staging \
+                  --templateLocation=gs://[YOUR_BUCKET_NAME]/templates/MyTemplate"
+```
+
+#### [Executing Templates](https://cloud.google.com/dataflow/docs/guides/templates/executing-templates)
+
+> This example creates a batch job from a template that reads a text file and writes an output text file.
+
+```bash
+    gcloud dataflow jobs run [JOB_NAME] \
+        --gcs-location gs://[YOUR_BUCKET_NAME]/templates/MyTemplate \
+        --parameters inputFile=gs://[YOUR_BUCKET_NAME]/input/my_input.txt,outputFile=gs://[YOUR_BUCKET_NAME]/output/my_output
+```
+
+> Google provides a set of open-source Cloud Dataflow templates.
+  
+* [Google Provided Templates](https://cloud.google.com/dataflow/docs/guides/templates/provided-templates)
+* [DataflowTemplates Repo on Github](https://github.com/GoogleCloudPlatform/DataflowTemplates)
+
+### Dataflow / Apache Beam Resources
 * [Setting up a Java Development Environment for Apache Beam on Google Cloud Platform](https://medium.com/google-cloud/setting-up-a-java-development-environment-for-apache-beam-on-google-cloud-platform-ec0c6c9fbb39)
 * [Dataflow Templates](https://github.com/GoogleCloudPlatform/DataflowTemplates)
 * [Data Engineer – Professional Certification Preparation for Google](https://cloudacademy.com/learning-paths/data-engineer-professional-certification-preparation-for-google-83/)
@@ -236,7 +280,7 @@ mvn archetype:generate \
 * [Performing ETL from a Relational Database into BigQuery](https://cloud.google.com/solutions/performing-etl-from-relational-database-into-bigquery)
 * [GoogleCloudPlatform/bigquery-etl-dataflow-sample](https://github.com/GoogleCloudPlatform/bigquery-etl-dataflow-sample)
 * [Quickstart Using Java and Apache Maven](https://cloud.google.com/dataflow/docs/quickstarts/quickstart-java-maven)
-* [](https://cloud.google.com/docs/tutorials)
+* [All Google Cloud Tutorials](https://cloud.google.com/docs/tutorials)
 
 ## Composer / Airflow
 
