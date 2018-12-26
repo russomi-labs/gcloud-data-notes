@@ -59,6 +59,9 @@ gcloud auth application-default login
 export GOOGLE_APPLICATION_CREDENTIALS="~/.config/gcloud/application_default_credentials.json"
 ```
 
+See [Setting up a Java Development Environment for Apache Beam on Google Cloud Platform](https://medium.com/google-cloud/setting-up-a-java-development-environment-for-apache-beam-on-google-cloud-platform-ec0c6c9fbb39).
+
+
 ### What is a pipeline?
 
 Taken from slides for [Learn Stream processing with Apache Beam](https://goo.gl/DlJvJL)
@@ -206,8 +209,22 @@ mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.complete.game.Le
   --topic=projects/$PROJECT/topics/game"
 ```
 
+## Create a new java project with the `mvn archetype:generate` command
+
+```bash
+mvn archetype:generate \
+      -DarchetypeGroupId=org.apache.beam \
+      -DarchetypeArtifactId=beam-sdks-java-maven-archetypes-examples \
+      -DarchetypeVersion=2.9.0 \
+      -DgroupId=com.russomi \
+      -DartifactId=word-count-beam \
+      -Dversion="0.1" \
+      -Dpackage=com.russomi.beam.examples \
+      -DinteractiveMode=false
+```
 
 ### Resources
+* [Setting up a Java Development Environment for Apache Beam on Google Cloud Platform](https://medium.com/google-cloud/setting-up-a-java-development-environment-for-apache-beam-on-google-cloud-platform-ec0c6c9fbb39)
 * [Dataflow Templates](https://github.com/GoogleCloudPlatform/DataflowTemplates)
 * [Data Engineer – Professional Certification Preparation for Google](https://cloudacademy.com/learning-paths/data-engineer-professional-certification-preparation-for-google-83/)
 * [cloudacademy/beam](https://github.com/cloudacademy/beam)
@@ -218,6 +235,8 @@ mvn compile exec:java -Dexec.mainClass=org.apache.beam.examples.complete.game.Le
 * [Apache Beam and Google Cloud Dataflow](https://www.youtube.com/watch?v=ss6SaNBHLGc)
 * [Performing ETL from a Relational Database into BigQuery](https://cloud.google.com/solutions/performing-etl-from-relational-database-into-bigquery)
 * [GoogleCloudPlatform/bigquery-etl-dataflow-sample](https://github.com/GoogleCloudPlatform/bigquery-etl-dataflow-sample)
+* [Quickstart Using Java and Apache Maven](https://cloud.google.com/dataflow/docs/quickstarts/quickstart-java-maven)
+* [](https://cloud.google.com/docs/tutorials)
 
 ## Composer / Airflow
 
