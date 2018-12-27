@@ -20,6 +20,8 @@ gcloud help
 gcloud help compute instances create
 ```
 
+---
+
 ## Google Big Data Products
 
 * https://cloud.google.com/products/big-data/
@@ -31,16 +33,22 @@ gcloud help compute instances create
 * https://www.coursera.org/learn/serverless-data-analysis-bigquery-cloud-dataflow-gcp
 * https://github.com/GoogleCloudPlatform/training-data-analyst
 
+---
+
 ## Big Query
 
 * https://cloud.google.com/bigquery/docs/
 * https://github.com/cloudacademy/optimizing-bigquery
+
+---
 
 ## Data Flow / Apache Beam
 
 This file contains text you can copy and paste for the examples in Cloud Academy's _Introduction to Google Cloud Dataflow_ course.  
 
 See [Apache Beam Java SDK Quickstart](https://beam.apache.org/get-started/quickstart-java/) for additional tutorials.
+* [Apache Beam WordCount Examples](https://beam.apache.org/get-started/wordcount-example/)
+* [Apache Beam Example Pipelines](https://github.com/apache/beam/tree/master/examples/java)
 
 ### Before you Begin
 
@@ -232,6 +240,8 @@ mvn compile exec:java -Dexec.mainClass=com.russomi.beam.examples.WordCount \
 
 See the [Java Quickstart](https://beam.apache.org/get-started/quickstart-java/) for more.
 
+---
+
 ### Dataflow Templates
 
 #### [Overview](https://cloud.google.com/dataflow/docs/guides/templates/overview)
@@ -292,6 +302,8 @@ pipeline (such as a `DoFn`).
 * [GoogleCloudPlatform/bigquery-etl-dataflow-sample](https://github.com/GoogleCloudPlatform/bigquery-etl-dataflow-sample)
 * [Quickstart Using Java and Apache Maven](https://cloud.google.com/dataflow/docs/quickstarts/quickstart-java-maven)
 * [All Google Cloud Tutorials](https://cloud.google.com/docs/tutorials)
+
+---
 
 ## Composer / Airflow
 
