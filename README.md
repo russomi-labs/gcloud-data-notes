@@ -339,3 +339,138 @@ Because of this, use their ‘base’ Docker image for testing DAGs. We build of
 * https://blog.usejournal.com/testing-in-airflow-part-1-dag-validation-tests-dag-definition-tests-and-unit-tests-2aa94970570c
 * https://medium.com/wbaa/datas-inferno-7-circles-of-data-testing-hell-with-airflow-cef4adff58d8
 
+---
+
+# [Setting up a Java Development Environment for Apache Beam on Google Cloud Platform](https://medium.com/google-cloud/setting-up-a-java-development-environment-for-apache-beam-on-google-cloud-platform-ec0c6c9fbb39)
+
+> These instructions will show you how to get a development environment up and running to start developing Java Dataflow 
+jobs. By the end you’ll be able to run a Dataflow job locally in debug mode, execute code in a REPL to speed your 
+development cycles, and submit your job to Google Cloud Dataflow.
+
+## Google Cloud Setup
+export PROJECT=$(gcloud config get-value core/project)
+
+## Create a bucket
+gsutil mb -c regional -l us-central1 gs://$PROJECT
+export BUCKET=$PROJECT
+
+## Create a BigQuery dataset
+bq mk DataflowJavaSetup
+bq mk java_quickstart
+
+## Cloning the Dataflow Templates Repo
+
+git clone https://github.com/GoogleCloudPlatform/DataflowTemplates
+
+# Run the Apache Beam Pipeline Locally
+
+mvn clean && mvn compile
+
+## Create a Run/Debug configuration for the class that defines this Apache Beam pipeline
+
+Add Application
+working directory drop down select %MAVEN_REPOSITORY%
+Choose class
+Add arguments
+
+```bash
+--project=sandbox
+--stagingLocation=gs://sandbox/staging
+--tempLocation=gs://sandbox/temp
+--templateLocation=gs://sandbox/templates/GcsToBigQueryTemplate.json
+--runner=TestDataflowRunner
+--javascriptTextTransformGcsPath=gs://sandbox/resources/UDF/sample_UDF.js
+--JSONPath=gs://sandbox/resources/schemas/sample_schema.json
+--javascriptTextTransformFunctionName=transform
+--inputFilePattern=gs://sandbox/data/data.txt
+--outputTable=sandbox:java_quickstart.colorful_coffee_people
+--bigQueryLoadingTemporaryDirectory=gs://sandbox/bq_load_temp/
+```
+
+## Set a break point and run the debugger
+
+line 93 of TextIOToBigQuery.java
+
+Right Click > “Debug TextIOToBigQuery”
+
+Right Click and choose “Evaluate expression” 
+
+# Run the Apache Beam Pipeline on the Google Cloud Dataflow Runner
+
+sample_schema.json:
+```
+{
+ “BigQuery Schema”: [
+ {
+ “name”: “location”,
+ “type”: “STRING”
+ },
+ {
+ “name”: “name”,
+ “type”: “STRING”
+ },
+ {
+ “name”: “age”,
+ “type”: “STRING”
+ },
+ {
+ “name”: “color”,
+ “type”: “STRING”
+ },
+ {
+ “name”: “coffee”,
+ “type”: “STRING”
+ }
+ ]
+}
+```
+
+sample_UDF.js:
+
+```javascript
+function transform(line) {
+ var values = line.split(‘,’);
+ var obj = new Object();
+ obj.location = values[0];
+ obj.name = values[1];
+ obj.age = values[2];
+ obj.color = values[3];
+ obj.coffee = values[4];
+ var jsonString = JSON.stringify(obj);
+ 
+return jsonString;
+}
+```
+
+
+data.txt:
+
+````text
+US,joe,18,green,late
+CAN,jan,33,red,cortado
+MEX,jonah,56,yellow,cappuccino
+````
+
+## Stage these files in Google Cloud Storage:
+
+```bash
+gsutil cp ./sample_UDF.js gs://$BUCKET/resources/UDF/
+gsutil cp ./sample_schema.json gs://$BUCKET/resources/schemas/
+gsutil cp ./data.txt gs://$BUCKET/data/
+
+mvn compile exec:java -Dexec.mainClass=com.google.cloud.teleport.templates.TextIOToBigQuery -Dexec.cleanupDaemonThreads=false -Dexec.args=” \
+--project=$PROJECT \
+--stagingLocation=gs://$BUCKET/staging \
+--tempLocation=gs://$BUCKET/temp \
+--templateLocation=gs://$BUCKET/templates/GcsToBigQueryTemplate.json \
+--runner=DataflowRunner”
+```
+
+## Submit the job
+
+```bash
+gcloud dataflow jobs run colorful-coffee-people-gcs-test-to-big-query \
+--gcs-location=gs://$BUCKET/templates/GcsToBigQueryTemplate.json \
+--zone=us-central1-f \
+--parameters=javascriptTextTransformGcsPath=gs://$BUCKET/resources/UDF/sample_UDF.js,JSONPath=gs://$BUCKET/resources/schemas/sample_schema.json,javascriptTextTransformFunctionName=transform,inputFilePattern=gs://$BUCKET/data/data.txt,outputTable=$PROJECT:java_quickstart.colorful_coffee_people,bigQueryLoadingTemporaryDirectory=gs://$BUCKET/bq_load_temp/
+```
