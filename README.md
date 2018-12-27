@@ -222,6 +222,16 @@ mvn archetype:generate \
       -Dpackage=com.russomi.beam.examples \
       -DinteractiveMode=false
 ```
+
+## Execute the Wordcount sample locally
+
+```bash
+mvn compile exec:java -Dexec.mainClass=com.russomi.beam.examples.WordCount \
+     -Dexec.args="--inputFile=pom.xml --output=counts" -Pdirect-runner
+```
+
+See the [Java Quickstart](https://beam.apache.org/get-started/quickstart-java/) for more.
+
 ### Dataflow Templates
 
 #### [Overview](https://cloud.google.com/dataflow/docs/guides/templates/overview)
@@ -268,6 +278,7 @@ pipeline (such as a `DoFn`).
 * [DataflowTemplates Repo on Github](https://github.com/GoogleCloudPlatform/DataflowTemplates)
 
 ### Dataflow / Apache Beam Resources
+
 * [Setting up a Java Development Environment for Apache Beam on Google Cloud Platform](https://medium.com/google-cloud/setting-up-a-java-development-environment-for-apache-beam-on-google-cloud-platform-ec0c6c9fbb39)
 * [Dataflow Templates](https://github.com/GoogleCloudPlatform/DataflowTemplates)
 * [Data Engineer – Professional Certification Preparation for Google](https://cloudacademy.com/learning-paths/data-engineer-professional-certification-preparation-for-google-83/)
