@@ -302,6 +302,7 @@ pipeline (such as a `DoFn`).
 * [GoogleCloudPlatform/bigquery-etl-dataflow-sample](https://github.com/GoogleCloudPlatform/bigquery-etl-dataflow-sample)
 * [Quickstart Using Java and Apache Maven](https://cloud.google.com/dataflow/docs/quickstarts/quickstart-java-maven)
 * [All Google Cloud Tutorials](https://cloud.google.com/docs/tutorials)
+* [jorwalk/data-engineering-gcp](https://github.com/jorwalk/data-engineering-gcp)
 
 ---
 
